@@ -1,0 +1,82 @@
+<div class="ui-g-8">
+    <p-chart type="polarArea" [data]="dados"></p-chart>
+</div>
+<div class="ui-g-4">
+  <h2>Cadastrar</h2>
+  <form #usuarioForm="ngForm" ngForm method="POST">
+    <div class="ui-g-12 ui-md-8 ui-fluid">
+      <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+        <input
+          name="nome"
+          type="text"
+          #nome="ngModel"
+          ngModel
+          required
+          pInputText
+          placeholder="Nome"
+        />
+      </div>
+      <div class="ui-g-12 ui-fluid">
+        <app-message
+          [control]="nome"
+          error="required"
+          text="Informe o nome"
+        ></app-message>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-8 ui-fluid">
+      <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon"><i class="fa fa-at"></i></span>
+
+        <input
+          name="email"
+          type="email"
+          #email="ngModel"
+          ngModel
+          pattern="\w+\@+(\w+\.com)+(\.gov\.br)?(\.br)?"
+          required
+          pInputText
+          placeholder="Email"
+        />
+      </div>
+      <div class="ui-g-12 ui-fluid">
+        <app-message
+          [control]="email"
+          error="required"
+          text="Informe um email!"
+        ></app-message>
+        <app-message
+          [control]="email"
+          error="pattern"
+          text="Informe um email válido!"
+        ></app-message>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-8 ui-fluid">
+      <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon"><i class="fa fa-phone"></i></span>
+        <input
+          name="telefone"
+          type="text"
+          #telefone="ngModel"
+          ngModel
+          required
+          maxlength="9"
+          pattern="(?!9)\d{8}|(9+\d{8})"
+          pInputText
+          placeholder="Telefone"
+        />
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <button
+        pButton
+        type="submit"
+        [disabled]="usuarioForm.invalid"
+        (click)="adicionar(usuarioForm); usuarioForm.reset()"
+        label="Salvar"
+      ></button>
+    </div>
+  </form>
+</div>

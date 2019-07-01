@@ -1,0 +1,6 @@
+*{
+    margin: 0;
+    padding: 3px;
+    background-color: rgba(3, 40, 58, 0.959);
+    display: inline-flex;
+}

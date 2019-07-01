@@ -1,0 +1,150 @@
+<div class="ui-g-3">
+    <label for="nome">Pesquise</label>
+    <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+        <input
+          name="nome"
+          type="text"
+          #nome="ngModel"
+          ngModel
+          required
+          pInputText
+          placeholder="Nome"
+        />
+      </div>
+</div>
+<div class="ui-g-9">
+  <form #usuarioForm="ngForm" ngForm method="POST">
+    <p-table
+      class="font-table"
+      [value]="usuarios"
+      dataKey="id"
+      [paginator]="true"
+      [rows]="10"
+      editMode="row"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th colspan="1">Id</th>
+          <th colspan="2">Nome</th>
+          <th colspan="3">Email</th>
+          <th colspan="2">Telefone</th>
+          <th>Editar</th>
+          <th>Excluir</th>
+        </tr>
+      </ng-template>
+      <ng-template
+        pTemplate="body"
+        let-usuario
+        let-editing="editing"
+        let-ri="rowIndex"
+      >
+        <tr [pEditableRow]="usuario">
+          <td colspan="1">
+            {{ usuario.id }}
+          </td>
+          <td colspan="2">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input
+                  name="nome"
+                  pInputText
+                  type="text"
+                  size="10"
+                  [(ngModel)]="usuario.nome"
+                  required
+                  maxlength="50"
+                  ngModel
+                  #nome="ngModel"
+                />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ usuario.nome }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td colspan="3">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input
+                  name="email"
+                  pInputText
+                  type="text"
+                  [(ngModel)]="usuario.email"
+                  required
+                  maxlength="50"
+                  pattern="\w+\@+(\w+\.com)+(\.gov\.br)?(\.br)?"
+                  ngModel
+                  #email="ngModel"
+                />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ usuario.email }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td colspan="2">
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input
+                  name="telefone"
+                  pInputText
+                  type="text"
+                  size="10"
+                  pattern="(?!9)\d{8}|(9+\d{8})"
+                  [(ngModel)]="usuario.telefone"
+                  required
+                  ngModel
+                  #telefone="ngModel"
+                />
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{ usuario.telefone }}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <button
+              *ngIf="!editing"
+              pButton
+              icon="far fa-edit"
+              type="button"
+              (click)="iniciarEditar(usuario)"
+              pInitEditableRow
+              class="ui-button-info"
+            ></button>
+            <button
+              *ngIf="editing"
+              pButton
+              type="button"
+              pSaveEditableRow
+              [disabled]="usuarioForm.invalid"
+              icon="far fa-save"
+              class="ui-button-success"
+              style="margin-right: .5em"
+              (click)="atualizar(usuario)"
+            ></button>
+            <button
+              *ngIf="editing"
+              pButton
+              type="button"
+              pCancelEditableRow
+              icon="fas fa-times"
+              (click)="editarCancelado(usuario, ri)"
+              class="ui-button-danger"
+            ></button>
+          </td>
+          <td>
+            <button
+              pButton
+              type="button"
+              icon="fas fa-trash-alt"
+              class="ui-button-danger"
+              (click)="excluir(usuario.id)"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </form>
+</div>
