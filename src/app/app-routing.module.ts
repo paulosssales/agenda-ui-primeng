@@ -5,11 +5,11 @@ import { UsuarioPesquisaComponent } from './usuario/usuario-pesquisa/usuario-pes
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/cadastro',pathMatch: 'full'},
+  { path: '', redirectTo: '/cadastro', pathMatch: 'full'},
   { path: 'cadastro', component: UsuarioFormComponent},
   { path: 'cadastro/:id', component: UsuarioFormComponent},
   { path: 'pesquisa', component: UsuarioPesquisaComponent},
-  { path: "**", component: PageNotFoundComponent}
+  { path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

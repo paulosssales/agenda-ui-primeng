@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { UsuarioFormService } from './usuario-form.service';
 
 @Component({
@@ -13,7 +15,7 @@ export class UsuarioFormComponent implements OnInit {
 
   dados: any;
 
-  constructor(private usuarioService: UsuarioFormService) { }
+  constructor(private usuarioService: UsuarioFormService, private router: Router) { }
 
   ngOnInit() {
     this.consultar();
@@ -35,6 +37,7 @@ export class UsuarioFormComponent implements OnInit {
               .then(estudanteResponse => {
                 alert(`Estudante "${estudanteResponse.nome}
                 " adicionado com código ${estudanteResponse.id}!`);
+                this.router.navigate(['pesquisa']);
               });
           }
         });
@@ -54,20 +57,20 @@ export class UsuarioFormComponent implements OnInit {
                     14
                 ],
                 backgroundColor: [
-                    "#FF6384",
-                    "#4BC0C0",
-                    "#FFCE56",
-                    "#E7E9ED",
-                    "#36A2EB"
+                    '#FF6384',
+                    '#4BC0C0',
+                    '#FFCE56',
+                    '#E7E9ED',
+                    '#36A2EB'
                 ],
                 label: 'My dataset'
             }],
             labels: [
-                "Cadastrados",
-                "Green",
-                "Yellow",
-                "Grey",
-                "Blue"
+                'Cadastrados',
+                'Green',
+                'Yellow',
+                'Grey',
+                'Blue'
             ]
         }
         });
