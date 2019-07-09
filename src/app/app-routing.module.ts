@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/usuario/grid', pathMatch: 'full'},
+  { path: '', redirectTo: '/usuario', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent}
 ];
 

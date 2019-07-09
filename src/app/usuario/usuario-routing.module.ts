@@ -7,6 +7,7 @@ import { UsuarioComponent } from './usuario.component';
 import { UsuarioGridComponent } from './usuario-grid/usuario-grid.component';
 
 const usuarioRoutes: Routes = [
+  { path: 'usuario', redirectTo: 'grid', pathMatch: 'full'},
   { path: 'usuario' , component: UsuarioComponent, children: [
     { path: 'pesquisa', component: UsuarioPesquisaComponent},
     { path: 'grid', component: UsuarioGridComponent},

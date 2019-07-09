@@ -109,6 +109,7 @@
             <button
               *ngIf="!editing"
               pButton
+              pTooltip="Editar"
               icon="far fa-edit"
               type="button"
               (click)="iniciarEditar(usuario)"
@@ -122,6 +123,7 @@
               pSaveEditableRow
               [disabled]="usuarioForm.invalid"
               icon="far fa-save"
+              pTooltip="Salvar"
               class="ui-button-success"
               style="margin-right: .5em"
               (click)="atualizar(usuario)"
@@ -129,6 +131,7 @@
             <button
               *ngIf="editing"
               pButton
+              pTooltip="Cancelar"
               type="button"
               pCancelEditableRow
               icon="fas fa-times"
@@ -139,6 +142,7 @@
           <td>
             <button
               pButton
+              pTooltip="Excluir"
               type="button"
               icon="fas fa-trash-alt"
               class="ui-button-danger"

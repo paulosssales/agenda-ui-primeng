@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { UsuarioFormService } from './../usuario-form/usuario-form.service';
@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './usuario-pesquisa.component.html',
   styleUrls: ['./usuario-pesquisa.component.css']
 })
-export class UsuarioPesquisaComponent implements OnInit {
+export class UsuarioPesquisaComponent implements OnInit, OnDestroy {
 
   usuarios = [];
   usuario: any;

@@ -12,6 +12,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { PanelMenuModule } from 'primeng/components/panelmenu/panelmenu';
+import { TooltipModule } from 'primeng/components/tooltip/tooltip';
 
 import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
 import { UsuarioFormService } from './usuario-form/usuario-form.service';
@@ -41,6 +42,7 @@ import { UsuarioGridComponent } from './usuario-grid/usuario-grid.component';
     ChartModule,
     PanelMenuModule,
     UsuarioRoutingModule,
+    TooltipModule,
     SharedModule
   ],
   providers: [
