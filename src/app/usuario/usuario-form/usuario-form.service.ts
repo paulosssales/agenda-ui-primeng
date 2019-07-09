@@ -29,6 +29,12 @@ export class UsuarioFormService {
     .then(response => response);
   }
 
+  consultarPorId(id): Promise<Aluno> {
+    return this.http.get<Aluno>(`${this.uri}/${id}`)
+    .toPromise()
+    .then(response => response);
+  }
+
   atualizar(aluno: Aluno): Promise<Aluno> {
     return this.http.put<Aluno>(this.uri, aluno)
     .toPromise()

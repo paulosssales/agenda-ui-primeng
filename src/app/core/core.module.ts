@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { TabMenuModule } from 'primeng/tabmenu';
+
 import { NavbarComponent } from './navbar/navbar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
@@ -10,7 +12,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CommonModule,
     TabMenuModule
   ],
-  exports:[
+  exports: [
     NavbarComponent,
     PageNotFoundComponent
   ]

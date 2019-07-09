@@ -13,13 +13,12 @@ export class UsuarioFormComponent implements OnInit {
   estudantes = [];
   alunoBd: Aluno;
 
-  dados: any;
+  constructor(
+    private usuarioService: UsuarioFormService,
+    private router: Router
+  ) { }
 
-  constructor(private usuarioService: UsuarioFormService, private router: Router) { }
-
-  ngOnInit() {
-    this.consultar();
-  }
+  ngOnInit() {}
 
   adicionar(aluno: any) {
     this.alunoBd = new Aluno();
@@ -37,45 +36,11 @@ export class UsuarioFormComponent implements OnInit {
               .then(estudanteResponse => {
                 alert(`Estudante "${estudanteResponse.nome}
                 " adicionado com código ${estudanteResponse.id}!`);
-                this.router.navigate(['pesquisa']);
+                this.router.navigate(['usuario/pesquisa']);
               });
           }
         });
   }
-
-  consultar(){
-    this.usuarioService.consultar()
-        .then(dados => {
-          this.estudantes = dados;
-          this.dados = {
-            datasets: [{
-                data: [
-                    this.estudantes.length,
-                    16,
-                    7,
-                    3,
-                    14
-                ],
-                backgroundColor: [
-                    '#FF6384',
-                    '#4BC0C0',
-                    '#FFCE56',
-                    '#E7E9ED',
-                    '#36A2EB'
-                ],
-                label: 'My dataset'
-            }],
-            labels: [
-                'Cadastrados',
-                'Green',
-                'Yellow',
-                'Grey',
-                'Blue'
-            ]
-        }
-        });
-  }
-
 }
 
 export class Aluno {

@@ -1,3 +1,4 @@
+import { UsuarioRoutingModule } from './usuario-routing.module';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -10,16 +11,21 @@ import { TableModule } from 'primeng/components/table/table';
 import { ButtonModule } from 'primeng/button';
 import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
+import { PanelMenuModule } from 'primeng/components/panelmenu/panelmenu';
 
 import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
 import { UsuarioFormService } from './usuario-form/usuario-form.service';
 import { UsuarioPesquisaComponent } from './usuario-pesquisa/usuario-pesquisa.component';
 import { SharedModule } from './../shared/shared.module';
+import { UsuarioComponent } from './usuario.component';
+import { UsuarioGridComponent } from './usuario-grid/usuario-grid.component';
 
 @NgModule({
   declarations: [
+    UsuarioComponent,
     UsuarioFormComponent,
-    UsuarioPesquisaComponent
+    UsuarioPesquisaComponent,
+    UsuarioGridComponent
   ],
   imports: [
     CommonModule,
@@ -33,12 +39,15 @@ import { SharedModule } from './../shared/shared.module';
     TableModule,
     ScrollingModule,
     ChartModule,
+    PanelMenuModule,
+    UsuarioRoutingModule,
     SharedModule
   ],
   providers: [
     UsuarioFormService
   ],
   exports: [
+    UsuarioComponent,
     UsuarioFormComponent,
     UsuarioPesquisaComponent
   ]

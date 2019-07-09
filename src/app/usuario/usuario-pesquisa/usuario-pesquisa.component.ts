@@ -1,6 +1,9 @@
-import { UsuarioFormService } from './../usuario-form/usuario-form.service';
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { UsuarioFormService } from './../usuario-form/usuario-form.service';
 import { Aluno } from '../usuario-form/usuario-form.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-usuario-pesquisa',
@@ -10,12 +13,27 @@ import { Aluno } from '../usuario-form/usuario-form.component';
 export class UsuarioPesquisaComponent implements OnInit {
 
   usuarios = [];
+  usuario: any;
   alunoClonado: { [s: string]: Aluno; } = {};
+  inscricao: Subscription;
 
-  constructor(private usuarioService: UsuarioFormService) { }
+  constructor(
+    private usuarioService: UsuarioFormService,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
     this.consultar();
+    this.inscricao = this.route.params.subscribe(
+      (params: any) => {
+        const id = params[`id`];
+        this.usuario = this.usuarioService.consultarPorId(id);
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.inscricao.unsubscribe();
   }
 
   consultar() {
